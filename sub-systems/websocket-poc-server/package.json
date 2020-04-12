@@ -4,7 +4,9 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prestart": "tsc",
+    "start": "node ./build/index.js"
   },
   "author": "achristianson@pessimistic-it.com",
   "license": "ISC"
