@@ -1,0 +1,11 @@
+{
+  "name": "websocket-poc-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "achristianson@pessimistic-it.com",
+  "license": "ISC"
+}
