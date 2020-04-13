@@ -5,9 +5,33 @@
   "main": "build/index.js",
   "scripts": {
     "test": "jest",
-    "prestart": "tsc",
-    "start": "node ./build/index.js"
+    "prestart": "npm run build",
+    "start": "node ./build/index.js",
+    "dev": "concurrently -k -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold\" \"npm run watch-ts\" \"nodemon ./dist/app.js\"",
+    "watch-ts": "tsc -w",
+    "build": "tsc",
+    "prebuild": "rimraf build"
   },
   "author": "achristianson@pessimistic-it.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/koa": "^2.11.3",
+    "@types/koa-logger": "^3.1.1",
+    "@types/koa-router": "^7.4.0",
+    "@types/node": "^13.11.1",
+    "@types/socket.io": "^2.1.4",
+    "@types/statuses": "^1.5.0",
+    "koa": "^2.11.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^8.0.8",
+    "prom-client": "^12.0.0",
+    "socket.io": "^2.3.0",
+    "statuses": "^1.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.3",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  }
 }
