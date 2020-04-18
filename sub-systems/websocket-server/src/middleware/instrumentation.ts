@@ -1,12 +1,8 @@
-import Koa from 'koa'
-import logger from 'koa-logger'
-import Router from 'koa-router'
 import { register, collectDefaultMetrics } from 'prom-client'
 import status from 'statuses';
+import Router from 'koa-router';
 
-const getRouter = () => {
-  const router = new Router()
-
+export default (router: Router) => {
   collectDefaultMetrics()
 
   router.get('/metrics', ctx => {
@@ -21,13 +17,4 @@ const getRouter = () => {
   router.get('/', ctx => {
     ctx.body = 'koa!!'
   })
-
-  return router
 }
-
-export default (app: Koa<Koa.DefaultState, Koa.DefaultContext>) => {
-  app.use(logger())
-  const router = getRouter()
-  app.use(router.routes())
-  app.use(router.allowedMethods())
-};
