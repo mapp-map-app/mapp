@@ -7,11 +7,10 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
+  test-web-client:
     runs-on: ubuntu-latest
 
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - uses: actions/cache@v1
       with:
@@ -19,8 +18,24 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-    # Runs a set of commands using the runners shell
     - name: test
+      working-directory: sub-systems/web-client
+      run: |
+        npm install
+        npm run test
+  test-websocket-server:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: test
+      working-directory: sub-systems/websocket-server
       run: |
         npm install
         npm run test
