@@ -2,8 +2,7 @@ import startup from './startup'
 import registerMiddleware from './middleware/register'
 import registerWebsocket from './websocket/register'
 import * as koaUtils from './middleware/koa-utils';
-import http, { Server } from 'http'
-import Koa from 'koa'
+import http from 'http'
 import Chance from 'chance'
 
 jest.mock('./middleware/register')
