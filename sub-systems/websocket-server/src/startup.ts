@@ -1,9 +1,9 @@
 import http from 'http'
 import registerMiddleware from './middleware/register'
 import registerWebsocket from './websocket/register'
-import { generateKoa } from './middleware/koa-utils';
+import { generateKoa } from './middleware/koa-utils'
 
-const port = 4000;
+const port = 4000
 
 export default () => {
   const app = generateKoa()

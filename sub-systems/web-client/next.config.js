@@ -1,6 +1,5 @@
 module.exports = {
-  serverRuntimeConfig: {
-  },
+  serverRuntimeConfig: {},
   publicRuntimeConfig: {
     websocketUrl: process.env.WEBSOCKET_HOST || 'http://localhost:4000',
   },

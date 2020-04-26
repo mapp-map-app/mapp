@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import { NextPage } from 'next';
+import { NextPage } from 'next'
 import Layout from '../components/Layout'
 
-interface props{
+interface props {
   userAgent: string
 }
 
-const Index: NextPage<props> = ({ userAgent }) =>
+const Index: NextPage<props> = ({ userAgent }) => (
   <>
     <Head>
       <title>websocket poc</title>
@@ -15,11 +15,11 @@ const Index: NextPage<props> = ({ userAgent }) =>
     <p>{userAgent}</p>
     <Layout />
   </>
-
+)
 
 Index.getInitialProps = async ({ req }) => {
-  const userAgent = req ? req.headers['user-agent'] || '' : navigator.userAgent;
-  return { userAgent };
-};
+  const userAgent = req ? req.headers['user-agent'] || '' : navigator.userAgent
+  return { userAgent }
+}
 
 export default Index
