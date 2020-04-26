@@ -1,19 +1,12 @@
 import socketIo from 'socket.io'
 
 export default class Logger {
-  private static io: socketIo.Server;
+  private static io: socketIo.Server
 
-  private constructor() {
-  }
+  private constructor() {}
 
   static log = (message: string) => {
-
-    Logger
-      .io
-      .volatile
-      .of('/poc')
-      .in('logViewers')
-      .emit('log', message)
+    Logger.io.volatile.of('/poc').in('logViewers').emit('log', message)
     console.log(message)
   }
 

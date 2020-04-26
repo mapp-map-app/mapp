@@ -1,19 +1,16 @@
 import { v4 } from 'uuid'
 import socketIo from 'socket.io'
-import {performance} from 'perf_hooks'
+import { performance } from 'perf_hooks'
 import Stats from 'moving-average'
 import Logger from './logging'
 
 export default (io: socketIo.Server) => {
   const stats = new Stats(5000)
-  let lastTimestamp:number
+  let lastTimestamp: number
   setInterval(() => {
     const uuid = v4()
 
-    io.volatile
-      .of('/poc')
-      .in('uuidWatchers')
-      .emit('uuid', uuid)
+    io.volatile.of('/poc').in('uuidWatchers').emit('uuid', uuid)
     const now = performance.now()
     if (lastTimestamp) stats.push(now, now - lastTimestamp)
     lastTimestamp = now
