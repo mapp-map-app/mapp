@@ -8,10 +8,11 @@ const FlexContainer = styled.div`
   justify-content: space-evenly;
 `
 
-const Layout = () =>
+const Layout = () => (
   <FlexContainer>
-    <Log event='uuid' showStats={true} />
-    <Log event='log'/>
+    <Log event="uuid" showStats={true} />
+    <Log event="log" />
   </FlexContainer>
+)
 
 export default Layout

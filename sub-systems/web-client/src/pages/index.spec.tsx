@@ -1,4 +1,4 @@
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'
 import Chance from 'chance'
 
 import Index from './index'
@@ -11,32 +11,29 @@ describe('Index', () => {
   const chance = new Chance()
   let randomUserAgent: string
   beforeEach(() => {
-    (Layout as jest.Mock).mockReturnValue(null)
+    ;(Layout as jest.Mock).mockReturnValue(null)
     randomUserAgent = chance.sentence()
   })
 
   it('should match snapshot', () => {
-    const tree = renderer
-      .create(<Index userAgent="non-random user agent" />)
-      .toJSON();
+    const tree = renderer.create(<Index userAgent="non-random user agent" />).toJSON()
 
-    expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot()
   })
 
   describe('getInitialProps', () => {
-    let context: any;
+    let context: any
     describe('server side rendered', () => {
       beforeEach(() => {
         context = {
           req: {
             headers: {
-              'user-agent': randomUserAgent
-            }
-          }
+              'user-agent': randomUserAgent,
+            },
+          },
         }
       })
       describe('user-agent header provided', () => {
-
         it('should extract the user agent', async () => {
           const props = await Index.getInitialProps!(context)
 
@@ -59,8 +56,7 @@ describe('Index', () => {
     describe('client side rendered', () => {
       beforeEach(() => {
         context = {}
-        jest.spyOn(window.navigator, 'userAgent', 'get')
-          .mockReturnValue(randomUserAgent)
+        jest.spyOn(window.navigator, 'userAgent', 'get').mockReturnValue(randomUserAgent)
       })
 
       it('should extract the user agent', async () => {
