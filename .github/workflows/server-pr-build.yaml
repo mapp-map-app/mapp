@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test-websocket-server:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: audit
+      working-directory: sub-systems/websocket-server
+      run: |
+        npm audit
+    - name: test
+      working-directory: sub-systems/websocket-server
+      run: |
+        npm install
+        npm run test

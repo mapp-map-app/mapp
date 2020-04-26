@@ -1,12 +1,12 @@
-import Koa from 'koa'
 import http from 'http'
 import registerMiddleware from './middleware/register'
 import registerWebsocket from './websocket/register'
+import { generateKoa } from './middleware/koa-utils';
 
 const port = 4000;
 
 export default () => {
-  const app = new Koa()
+  const app = generateKoa()
   registerMiddleware(app)
   const server = http.createServer(app.callback())
   registerWebsocket(server)
