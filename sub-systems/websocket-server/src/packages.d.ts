@@ -1,1 +1,1 @@
-declare module 'moving-average'
+declare module 'lodash-id'

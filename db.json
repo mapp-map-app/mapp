@@ -1,0 +1,23 @@
+{
+  "rooms": [
+    {
+      "id": "test",
+      "title": "altered it"
+    },
+    {
+      "title": "adfadf",
+      "id": "1644f17c-5d11-4cbf-89b5-884634d64c7b"
+    },
+    {
+      "id": "7848bab1-7ff0-443c-b518-5fd3d058c79b",
+      "title": "adf   diff   adf"
+    }
+  ],
+  "objects": [
+    {
+      "roomId": "test",
+      "imageUrl": "adfadf",
+      "id": "fa16f854-83a4-4ad2-9d11-8d7fbd6c4e17"
+    }
+  ]
+}

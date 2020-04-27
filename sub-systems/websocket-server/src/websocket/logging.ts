@@ -1,16 +1,11 @@
 import socketIo from 'socket.io'
+import Server from './websocket-server'
 
 export default class Logger {
-  private static io: socketIo.Server
-
   private constructor() {}
 
-  static log = (message: string) => {
-    Logger.io.volatile.of('/poc').in('logViewers').emit('log', message)
-    console.log(message)
-  }
-
-  static setup(io: socketIo.Server) {
-    Logger.io = io
+  static log = (message: string, metadata: any) => {
+    console.log(message, metadata)
+    Server.getInstance().volatile.in('logViewers').emit('log', message)
   }
 }
