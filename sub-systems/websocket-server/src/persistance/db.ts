@@ -32,22 +32,4 @@ export class Database {
   }
 
   static getInstance = () => Database.db
-
-  private static roomObjects = () => Database.db.get('objects')
-  private static rooms = () => Database.db.get('rooms')
-
-  static getObjectById = (objectId: string) => Database.roomObjects().find({ id: objectId }).value()
-  static updateObject = async (roomObject: RoomObject) => {
-    await Database.roomObjects().find({ id: roomObject.id }).assign(roomObject).write()
-    Server.getInstance().in(`room-${roomObject.roomId}`).emit('roomObjectChanged', roomObject)
-    Logger.log(`Room object ${roomObject.id} (in room ${roomObject.roomId}) changed.`)
-  }
-
-  static getObjectsByRoomId = (roomId: string) => Database.roomObjects().filter({ roomId }).value()
-  static getRoomById = (id: string) => Database.rooms().find({ id }).value()
-  static updateRoom = async (room: Room) => {
-    await Database.rooms().find({ id: room.id }).assign(room).write()
-    Server.getInstance().in(`room-${room.id}`).emit('roomChanged', room)
-    Logger.log(`Room ${room.id} changed.`)
-  }
 }
