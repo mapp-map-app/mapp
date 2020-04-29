@@ -1,11 +1,11 @@
 import Router from 'koa-router'
 import Koa from 'koa'
-import setupInstrumentation from './instrumentation'
+import controllers from '../controllers'
 
 export default (app: Koa<Koa.DefaultState, Koa.DefaultContext>) => {
   const router = new Router()
 
-  setupInstrumentation(router)
+  controllers.forEach((controller) => controller(router))
 
   app.use(router.routes())
   app.use(router.allowedMethods())

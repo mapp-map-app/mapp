@@ -1,6 +1,7 @@
 import startup from './startup'
 import registerMiddleware from './middleware/register'
 import registerWebsocket from './websocket/register'
+import { startupDatabase } from './persistance/startup'
 import * as koaUtils from './middleware/koa-utils'
 import http from 'http'
 import Chance from 'chance'
@@ -8,6 +9,7 @@ import Chance from 'chance'
 jest.mock('./middleware/register')
 jest.mock('./websocket/register')
 jest.mock('./middleware/koa-utils')
+jest.mock('./persistance/startup')
 jest.mock('http')
 
 describe('startup', () => {
@@ -31,27 +33,33 @@ describe('startup', () => {
     console.log = jest.fn()
   })
 
-  it('should pass a koa app around', () => {
-    startup()
+  it('should startup the db', async () => {
+    await startup()
+
+    expect(startupDatabase).toHaveBeenCalled()
+  })
+
+  it('should pass a koa app around', async () => {
+    await startup()
 
     expect(registerMiddleware).toHaveBeenCalledWith(mockApp)
     expect(createServer).toHaveBeenCalledWith(fakeCallbackReturn)
   })
 
-  it('should register websocket stuff', () => {
-    startup()
+  it('should register websocket stuff', async () => {
+    await startup()
 
     expect(registerWebsocket).toHaveBeenCalledWith(mockServer)
   })
 
-  it('should log', () => {
-    startup()
+  it('should log', async () => {
+    await startup()
 
     expect(console.log).toHaveBeenCalled()
   })
 
-  it('should listen on 4000', () => {
-    startup()
+  it('should listen on 4000', async () => {
+    await startup()
 
     expect(mockServer.listen).toHaveBeenCalledWith(4000)
   })
