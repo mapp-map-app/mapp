@@ -1,7 +1,7 @@
-import fetch from 'isomorphic-unfetch';
+import fetch from 'isomorphic-unfetch'
 
-export const swrFetch =  async (input: RequestInfo, init?: RequestInit | undefined) => {
-  const res = await fetch(input, init);
+export const swrFetch = async (input: RequestInfo, init?: RequestInit | undefined) => {
+  const res = await fetch(input, init)
 
-  return res.json();
+  return res.json()
 }

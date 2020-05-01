@@ -12,7 +12,7 @@ const List = styled.div`
 `
 
 const ListItem = styled.div`
-  margin:5px;
+  margin: 5px;
 `
 
 const RoomSelection = () => {
@@ -21,7 +21,7 @@ const RoomSelection = () => {
   } = getConfig()
 
   const { data, error } = useSWR<Room[]>(`${apiUrl}/rooms`, swrFetch, {
-    refreshInterval: 5000
+    refreshInterval: 5000,
   })
   if (error) {
     return <p>{'Unable to load room list'}</p>
@@ -36,11 +36,11 @@ const RoomSelection = () => {
       <ListItem>
         <CreateRoomButton />
       </ListItem>
-      {data.map(room =>
+      {data.map((room) => (
         <ListItem key={room.id}>
           <SmallRoomSelector room={room} />
         </ListItem>
-      )}
+      ))}
     </List>
   )
 }

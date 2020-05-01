@@ -8,7 +8,7 @@ const List = styled.div`
 `
 
 const ListItem = styled.div`
-  margin:5px;
+  margin: 5px;
 `
 
 const Stats = () => {
@@ -21,7 +21,7 @@ const Stats = () => {
     rooms: number
     objects: number
   }>(`${apiUrl}/stats`, swrFetch, {
-    refreshInterval: 2000
+    refreshInterval: 2000,
   })
   if (error) {
     return <p>{'Unable to load stats'}</p>
@@ -33,9 +33,9 @@ const Stats = () => {
 
   return (
     <List>
-        <ListItem>{`Connections: ${data.connections}`}</ListItem>
-        <ListItem>{`Rooms: ${data.rooms}`}</ListItem>
-        <ListItem>{`Room Objects: ${data.objects}`}</ListItem>
+      <ListItem>{`Connections: ${data.connections}`}</ListItem>
+      <ListItem>{`Rooms: ${data.rooms}`}</ListItem>
+      <ListItem>{`Room Objects: ${data.objects}`}</ListItem>
     </List>
   )
 }

@@ -3,13 +3,12 @@ import { Room } from '../../../types/types'
 import { FunctionComponent } from 'react'
 import Link from 'next/link'
 
-
 interface Props {
   room: Room
 }
 
 const Container = styled.div`
-  display:flex;
+  display: flex;
   flex-direction: column;
 `
 const Indented = styled.div`
@@ -25,10 +24,9 @@ const Id = styled.div`
   font-family: monospace;
 `
 
-const Description = styled(Indented)`
-`
+const Description = styled(Indented)``
 
-const SmallRoomLink: FunctionComponent<Props> = ({ room }) =>
+const SmallRoomLink: FunctionComponent<Props> = ({ room }) => (
   <Link href={`/room/${room.id}`}>
     <Container>
       <Id>{room.id}</Id>
@@ -36,5 +34,6 @@ const SmallRoomLink: FunctionComponent<Props> = ({ room }) =>
       <Description>{room.description}</Description>
     </Container>
   </Link>
+)
 
 export default SmallRoomLink

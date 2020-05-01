@@ -2,11 +2,8 @@
 
 exports[`Index should match snapshot 1`] = `
 Array [
-  <p>
-    Hello World
-  </p>,
-  <p>
-    non-random user agent
-  </p>,
+  "stats component",
+  <hr />,
+  "room component",
 ]
 `;

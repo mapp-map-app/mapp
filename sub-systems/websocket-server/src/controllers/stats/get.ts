@@ -6,10 +6,11 @@ import Server from '../../websocket/websocket-server'
 export const get =  (router: Router) =>
   router.get(['/stats'], async (ctx) => {
     const [allRooms, allRoomObjects] = await Promise.all([getAllRooms(), getAllRoomObjects()])
+    const connections = Object.keys(Server.getInstance().sockets.sockets).length
 
     ctx.body = {
       rooms: allRooms.length,
       objects: allRoomObjects.length,
-      connections: Object.keys(Server.getInstance().sockets.sockets).length
+      connections
     }
   })
