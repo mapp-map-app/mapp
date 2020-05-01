@@ -1,7 +1,7 @@
 import Router from 'koa-router'
 import { update } from '../../persistance/repositories/rooms'
 import status from 'statuses'
-import { Room } from '../../persistance/db'
+import { Room } from '../../../../types/types'
 
 export const put = (router: Router) =>
   router.put('/rooms', async (ctx) => {

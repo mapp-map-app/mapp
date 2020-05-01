@@ -1,6 +1,7 @@
-import { Database, RoomObject } from '../db'
+import { Database } from '../db'
 import Server from '../../websocket/websocket-server'
 import Logger from '../../websocket/logging'
+import { RoomObject } from '../../../../types/types'
 
 const roomObjects = () => Database.getInstance().get('objects')
 
