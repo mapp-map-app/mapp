@@ -1,23 +1,6 @@
 import Lowdb from 'lowdb'
-import Server from '../websocket/websocket-server'
-import Logger from '../websocket/logging'
-
-export interface RoomObject {
-  id: string
-  roomId: string
-  position: {
-    x: number
-    y: number
-  }
-  imageUrl: string
-}
-
-export interface Room {
-  id: string
-  description: string
-  title: string
-  imageUrl: string
-}
+import {Room} from '../../../types/types'
+import {RoomObject} from '../../../types/types'
 
 interface Schema {
   rooms: Array<Room>

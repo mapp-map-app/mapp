@@ -22,9 +22,9 @@ const Log = ({ event, showStats }: Props) => {
 
   useEffect(() => {
     const {
-      publicRuntimeConfig: { websocketUrl },
+      publicRuntimeConfig: { apiUrl },
     } = getConfig()
-    const pocSocket = io(`${websocketUrl}/poc`, {
+    const pocSocket = io(`${apiUrl}/poc`, {
       path: '/socket.io',
     })
     let lastTimestamp: number

@@ -10,20 +10,22 @@
     "pretest": "npm run lint",
     "lint": "prettier --check .",
     "prettier-write": "prettier --write .",
-    "prettier-watch": "onchange '**/*.tsx' '**/*.ts' '**/*.json' '**/*.js' -- prettier --write {{changed}}"
+    "prettier-watch": "onchange '**/*.tsx' '**/*.ts' '**/*.json' '**/*.js' -e '.next' -e 'node_modules' -- prettier --write {{changed}}"
   },
   "author": "achristianson@pessimistic-it.com",
   "license": "ISC",
   "dependencies": {
     "@types/react-test-renderer": "^16.9.2",
     "@types/socket.io-client": "^1.4.32",
+    "isomorphic-unfetch": "^3.0.0",
     "moving-average": "^1.0.0",
     "next": "^9.3.4",
     "performance-now": "^2.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "socket.io-client": "^2.3.0",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "swr": "^0.2.0"
   },
   "devDependencies": {
     "@types/chance": "^1.0.10",

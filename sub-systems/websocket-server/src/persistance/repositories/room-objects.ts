@@ -4,6 +4,7 @@ import Logger from '../../websocket/logging'
 
 const roomObjects = () => Database.getInstance().get('objects')
 
+export const getAll = () => roomObjects().value()
 export const getById = (objectId: string) => roomObjects().getById(objectId).value()
 export const update = async (roomObject: RoomObject) => {
   const upsertedRoomObject = await roomObjects().upsert(roomObject).write()
