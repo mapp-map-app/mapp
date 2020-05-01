@@ -1,6 +1,6 @@
 import Lowdb from 'lowdb'
-import {Room} from '../../../types/types'
-import {RoomObject} from '../../../types/types'
+import { Room } from '../../../types/types'
+import { RoomObject } from '../../../types/types'
 
 interface Schema {
   rooms: Array<Room>

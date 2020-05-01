@@ -3,7 +3,7 @@ import { getAll as getAllRoomObjects } from '../../persistance/repositories/room
 import { getAll as getAllRooms } from '../../persistance/repositories/rooms'
 import Server from '../../websocket/websocket-server'
 
-export const get =  (router: Router) =>
+export const get = (router: Router) =>
   router.get(['/stats'], async (ctx) => {
     const [allRooms, allRoomObjects] = await Promise.all([getAllRooms(), getAllRoomObjects()])
     const connections = Object.keys(Server.getInstance().sockets.sockets).length
@@ -11,6 +11,6 @@ export const get =  (router: Router) =>
     ctx.body = {
       rooms: allRooms.length,
       objects: allRoomObjects.length,
-      connections
+      connections,
     }
   })
