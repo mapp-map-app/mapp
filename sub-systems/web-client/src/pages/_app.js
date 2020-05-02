@@ -11,7 +11,6 @@ const App = ({ Component, pageProps }) => (
       <title>{'MAPP'}</title>
     </Head>
     <Content>
-      <Header />
       <MainView>
         <Component {...pageProps} />
       </MainView>

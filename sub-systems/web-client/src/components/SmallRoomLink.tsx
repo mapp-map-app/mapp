@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Room } from '../../../types/types'
 import { FunctionComponent } from 'react'
 import Link from 'next/link'
+import Id from './styles/Id'
 
 interface Props {
   room: Room
@@ -17,11 +18,6 @@ const Indented = styled.div`
 
 const Title = styled(Indented)`
   font-weight: bold;
-`
-
-const Id = styled.div`
-  font-size: smaller;
-  font-family: monospace;
 `
 
 const Description = styled(Indented)``

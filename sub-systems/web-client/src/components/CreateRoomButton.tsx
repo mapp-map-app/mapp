@@ -4,8 +4,7 @@ import getConfig from 'next/config'
 
 interface Props {}
 const Button = styled.button`
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid;
   border-radius: 5px;
 `
 const createRoom = async () => {
