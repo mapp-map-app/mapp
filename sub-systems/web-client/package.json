@@ -23,6 +23,7 @@
     "performance-now": "^2.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-draggable": "^4.3.1",
     "socket.io-client": "^2.3.0",
     "styled-components": "^5.1.0",
     "swr": "^0.2.0"

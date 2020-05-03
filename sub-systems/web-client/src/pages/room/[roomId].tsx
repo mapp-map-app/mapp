@@ -12,10 +12,6 @@ interface Props {
   roomObjects: RoomObject[];
 }
 
-const {
-  publicRuntimeConfig: { apiUrl },
-} = getConfig();
-
 const RoomPage: NextPage<Props> = ({
   room: initialRoom,
   roomObjects: intialObjects,
@@ -24,6 +20,10 @@ const RoomPage: NextPage<Props> = ({
   const [roomObjects, setRoomObjects] = useState<RoomObject[]>(intialObjects);
 
   useEffect(() => {
+    const {
+      publicRuntimeConfig: { apiUrl },
+    } = getConfig();
+
     const socket = io(`${apiUrl}`);
     socket.emit('joinRoom', room.id);
     socket.on('roomChanged', (updatedRoom: Room) => {
@@ -51,8 +51,8 @@ RoomPage.getInitialProps = async (ctx: NextPageContext) => {
   const {
     query: { roomId },
   } = ctx;
-  const roomPromise = swrFetch(`${apiUrl}/rooms/${roomId}`);
-  const roomObjectsPromise = swrFetch(`${apiUrl}/rooms/${roomId}/room-objects`);
+  const roomPromise = swrFetch(`/rooms/${roomId}`);
+  const roomObjectsPromise = swrFetch(`/rooms/${roomId}/room-objects`);
 
   const [room, roomObjects] = await Promise.all([
     roomPromise,

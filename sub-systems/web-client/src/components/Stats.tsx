@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import getConfig from 'next/config';
 import useSWR from 'swr';
 import { swrFetch } from '../utils/fetch-helpers';
 
@@ -12,15 +11,11 @@ const ListItem = styled.div`
 `;
 
 const Stats = () => {
-  const {
-    publicRuntimeConfig: { apiUrl },
-  } = getConfig();
-
   const { data, error } = useSWR<{
     connections: number;
     rooms: number;
     objects: number;
-  }>(`${apiUrl}/stats`, swrFetch, {
+  }>('/stats', swrFetch, {
     refreshInterval: 2000,
   });
   if (error) {

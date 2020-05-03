@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import getConfig from 'next/config';
 import useSWR from 'swr';
 import { swrFetch } from '../utils/fetch-helpers';
 import { Room } from '../../../types/types';
@@ -16,11 +15,7 @@ const ListItem = styled.div`
 `;
 
 const RoomSelection = () => {
-  const {
-    publicRuntimeConfig: { apiUrl },
-  } = getConfig();
-
-  const { data, error } = useSWR<Room[]>(`${apiUrl}/rooms`, swrFetch, {
+  const { data, error } = useSWR<Room[]>('/rooms', swrFetch, {
     refreshInterval: 5000,
   });
   if (error) {

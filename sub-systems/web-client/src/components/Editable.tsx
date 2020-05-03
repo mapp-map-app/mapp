@@ -2,13 +2,18 @@ import styled from 'styled-components';
 import React, { useState, useEffect } from 'react';
 
 type Props = {
-  value: string;
+  value: any;
   onChange: (newValue: string) => void;
+  type?: 'number' | 'text';
 };
 
 const Input = styled.input``;
 
-const Editable = ({ value: valueProp, onChange: update }: Props) => {
+const Editable = ({
+  value: valueProp = '',
+  onChange: update,
+  type = 'text',
+}: Props) => {
   const [value, setValue] = useState<string>(valueProp);
   useEffect(() => {
     setValue(valueProp);
@@ -23,7 +28,7 @@ const Editable = ({ value: valueProp, onChange: update }: Props) => {
     }
   };
   return (
-    <Input type="text" value={value} onChange={onChange} onBlur={onBlur} />
+    <Input type={type} value={value} onChange={onChange} onBlur={onBlur} />
   );
 };
 

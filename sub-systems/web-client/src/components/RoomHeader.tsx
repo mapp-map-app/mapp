@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import getConfig from 'next/config';
 import React from 'react';
 import { Room } from '../../../types/types';
 import Editable from './Editable';
 import Id from './styles/Id';
-import { swrFetch } from '../utils/fetch-helpers';
+import { put } from '../utils/fetch-helpers';
 
 type Props = {
   room: Room;
@@ -18,43 +17,20 @@ const Container = styled.div`
 `;
 
 const RoomHeader = ({ room }: Props) => {
-  const {
-    publicRuntimeConfig: { apiUrl },
-  } = getConfig();
-
-  const updateRoom = async (room: Room) => {
-    await swrFetch(`${apiUrl}/rooms/${room.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(room),
+  const updateRoom = (key: string) => async (value: any) => {
+    await put(`/rooms/${room.id}`, {
+      ...room,
+      [key]: value,
     });
   };
-
-  const updateTitle = (title: string) =>
-    updateRoom({
-      ...room,
-      title,
-    });
-
-  const updateDescription = (description: string) =>
-    updateRoom({
-      ...room,
-      description,
-    });
-  const updateImage = (imageUrl: string) =>
-    updateRoom({
-      ...room,
-      imageUrl,
-    });
 
   return (
     <Container>
       <Id>{room.id}</Id>
-      <Editable value={room.title} onChange={updateTitle} />
-      <Editable value={room.description} onChange={updateDescription} />
-      <Editable value={room.imageUrl} onChange={updateImage} />
+      <Editable value={room.title} onChange={updateRoom('title')} />
+      <Editable value={room.description} onChange={updateRoom('description')} />
+      <Editable value={room.imageUrl} onChange={updateRoom('imageUrl')} />
+      <Editable type="number" value={room.size} onChange={updateRoom('size')} />
     </Container>
   );
 };

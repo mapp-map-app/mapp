@@ -14,4 +14,5 @@ export interface Room {
   description: string
   title: string
   imageUrl: string
+  size: number
 }

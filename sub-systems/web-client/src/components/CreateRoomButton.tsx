@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FunctionComponent } from 'react';
-import getConfig from 'next/config';
+import { put } from '../utils/fetch-helpers';
 
 interface Props {}
 const Button = styled.button`
@@ -8,18 +8,10 @@ const Button = styled.button`
   border-radius: 5px;
 `;
 const createRoom = async () => {
-  const {
-    publicRuntimeConfig: { apiUrl },
-  } = getConfig();
-  await fetch(`${apiUrl}/rooms`, {
-    method: 'PUT',
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      title: 'new room',
-      description: 'description goes here',
-    }),
+  await put('/rooms', {
+    title: 'new room',
+    description: 'description goes here',
+    size: 100,
   });
 };
 
