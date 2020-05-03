@@ -16,7 +16,10 @@ const {
   publicRuntimeConfig: { apiUrl },
 } = getConfig()
 
-const RoomPage: NextPage<Props> = ({ room: initialRoom, roomObjects: intialObjects }) => {
+const RoomPage: NextPage<Props> = ({
+  room: initialRoom,
+  roomObjects: intialObjects,
+}) => {
   const [room, setRoom] = useState<Room>(initialRoom)
   const [roomObjects, setRoomObjects] = useState<RoomObject[]>(intialObjects)
 
@@ -27,7 +30,10 @@ const RoomPage: NextPage<Props> = ({ room: initialRoom, roomObjects: intialObjec
       setRoom(updatedRoom)
     })
     socket.on('roomObjectChanged', (updatedRoomObject: RoomObject) => {
-      setRoomObjects((previousRoomObjects) => [...previousRoomObjects.filter(({ id }) => id !== updatedRoomObject.id), updatedRoomObject])
+      setRoomObjects((previousRoomObjects) => [
+        ...previousRoomObjects.filter(({ id }) => id !== updatedRoomObject.id),
+        updatedRoomObject,
+      ])
     })
     return () => {
       socket.disconnect()
@@ -48,7 +54,10 @@ RoomPage.getInitialProps = async (ctx: NextPageContext) => {
   const roomPromise = swrFetch(`${apiUrl}/rooms/${roomId}`)
   const roomObjectsPromise = swrFetch(`${apiUrl}/rooms/${roomId}/room-objects`)
 
-  const [room, roomObjects] = await Promise.all([roomPromise, roomObjectsPromise])
+  const [room, roomObjects] = await Promise.all([
+    roomPromise,
+    roomObjectsPromise,
+  ])
 
   return {
     room,

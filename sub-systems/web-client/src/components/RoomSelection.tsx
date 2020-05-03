@@ -3,7 +3,7 @@ import getConfig from 'next/config'
 import useSWR from 'swr'
 import { swrFetch } from '../utils/fetch-helpers'
 import { Room } from '../../../types/types'
-import SmallRoomSelector from './SmallRoomLink'
+import SmallRoomDisplay from './SmallRoomDisplay'
 import CreateRoomButton from './CreateRoomButton'
 
 const List = styled.div`
@@ -38,7 +38,7 @@ const RoomSelection = () => {
       </ListItem>
       {data.map((room) => (
         <ListItem key={room.id}>
-          <SmallRoomSelector room={room} />
+          <SmallRoomDisplay room={room} />
         </ListItem>
       ))}
     </List>

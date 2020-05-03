@@ -7,6 +7,8 @@ const Container = styled.div`
 
 interface Props {}
 
-const MainView: FunctionComponent<PropsWithChildren<Props>> = ({ children }) => <Container>{children}</Container>
+const MainView: FunctionComponent<PropsWithChildren<Props>> = ({
+  children,
+}) => <Container>{children}</Container>
 
 export default MainView

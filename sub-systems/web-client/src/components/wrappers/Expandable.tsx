@@ -20,7 +20,10 @@ const Container = styled.div`
   }
 `
 
-const Expandable: FunctionComponent<PropsWithChildren<Props>> = ({ children, title }) => (
+const Expandable: FunctionComponent<PropsWithChildren<Props>> = ({
+  children,
+  title,
+}) => (
   <Container>
     <Wrapper>{children}</Wrapper>
     {title}

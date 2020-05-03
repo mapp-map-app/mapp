@@ -6,6 +6,7 @@ export interface RoomObject {
     y: number
   }
   imageUrl: string
+  title: string
 }
 
 export interface Room {

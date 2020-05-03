@@ -3,6 +3,7 @@ import { Room } from '../../../types/types'
 import { FunctionComponent } from 'react'
 import Link from 'next/link'
 import Id from './styles/Id'
+import GotoRoomLink from './GotoRoomLink'
 
 interface Props {
   room: Room
@@ -22,14 +23,14 @@ const Title = styled(Indented)`
 
 const Description = styled(Indented)``
 
-const SmallRoomLink: FunctionComponent<Props> = ({ room }) => (
-  <Link href={`/room/${room.id}`}>
+const SmallRoomDisplay: FunctionComponent<Props> = ({ room }) => (
+  <GotoRoomLink room={room}>
     <Container>
       <Id>{room.id}</Id>
       <Title>{room.title}</Title>
       <Description>{room.description}</Description>
     </Container>
-  </Link>
+  </GotoRoomLink>
 )
 
-export default SmallRoomLink
+export default SmallRoomDisplay

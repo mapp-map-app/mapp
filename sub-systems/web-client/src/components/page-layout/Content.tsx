@@ -9,6 +9,8 @@ const Container = styled.div`
 
 interface Props {}
 
-const Content: FunctionComponent<PropsWithChildren<Props>> = ({ children }) => <Container>{children}</Container>
+const Content: FunctionComponent<PropsWithChildren<Props>> = ({ children }) => (
+  <Container>{children}</Container>
+)
 
 export default Content
