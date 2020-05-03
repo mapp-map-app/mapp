@@ -1,5 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const Header = () => <h1>{'MAPP: Map APP'}</h1>
+const Header = () => <h1>{'MAPP: Map APP'}</h1>;
 
-export default Header
+export default Header;

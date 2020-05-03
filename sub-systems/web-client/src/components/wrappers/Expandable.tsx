@@ -1,8 +1,8 @@
-import { PropsWithChildren, FunctionComponent, ReactNode } from 'react'
-import styled from 'styled-components'
+import { PropsWithChildren, FunctionComponent, ReactNode } from 'react';
+import styled from 'styled-components';
 
 interface Props {
-  title: ReactNode | string
+  title: ReactNode | string;
 }
 
 const Wrapper = styled.div`
@@ -12,13 +12,13 @@ const Wrapper = styled.div`
   position: absolute;
   bottom: 0;
   background: white;
-`
+`;
 
 const Container = styled.div`
   :hover ${Wrapper} {
     display: inherit;
   }
-`
+`;
 
 const Expandable: FunctionComponent<PropsWithChildren<Props>> = ({
   children,
@@ -28,6 +28,6 @@ const Expandable: FunctionComponent<PropsWithChildren<Props>> = ({
     <Wrapper>{children}</Wrapper>
     {title}
   </Container>
-)
+);
 
-export default Expandable
+export default Expandable;

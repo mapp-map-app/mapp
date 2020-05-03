@@ -1,4 +1,4 @@
-import { get } from './get'
-import { put } from './put'
+import { get } from './get';
+import { put } from './put';
 
-export default [get, put]
+export default [get, put];

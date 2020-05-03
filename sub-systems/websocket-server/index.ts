@@ -1,3 +1,3 @@
-import startup from './src/startup'
+import startup from './src/startup';
 
-startup()
+startup();

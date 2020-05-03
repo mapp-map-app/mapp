@@ -1,16 +1,16 @@
-import styled from 'styled-components'
-import { FunctionComponent } from 'react'
-import getConfig from 'next/config'
+import styled from 'styled-components';
+import { FunctionComponent } from 'react';
+import getConfig from 'next/config';
 
 interface Props {}
 const Button = styled.button`
   border: 1px solid;
   border-radius: 5px;
-`
+`;
 const createRoom = async () => {
   const {
     publicRuntimeConfig: { apiUrl },
-  } = getConfig()
+  } = getConfig();
   await fetch(`${apiUrl}/rooms`, {
     method: 'PUT',
     headers: {
@@ -20,11 +20,11 @@ const createRoom = async () => {
       title: 'new room',
       description: 'description goes here',
     }),
-  })
-}
+  });
+};
 
 const CreateRoomButton: FunctionComponent<Props> = () => {
-  return <Button onClick={createRoom}>{'Create Room'}</Button>
-}
+  return <Button onClick={createRoom}>{'Create Room'}</Button>;
+};
 
-export default CreateRoomButton
+export default CreateRoomButton;

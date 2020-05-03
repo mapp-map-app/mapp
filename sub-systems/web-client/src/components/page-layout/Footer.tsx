@@ -1,13 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
-import Log from '../Log'
-import Expandable from '../wrappers/Expandable'
+import React from 'react';
+import styled from 'styled-components';
+import Log from '../Log';
+import Expandable from '../wrappers/Expandable';
 const Container = styled.div`
   display: flex;
   > * {
     margin: 5px;
   }
-`
+`;
 
 const Footer = () => (
   <Container>
@@ -16,6 +16,6 @@ const Footer = () => (
       <Log event="log" />
     </Expandable>
   </Container>
-)
+);
 
-export default Footer
+export default Footer;

@@ -1,45 +1,47 @@
-import React from 'react'
-import { RoomObject, Room } from '../../../types/types'
-import styled from 'styled-components'
-import getConfig from 'next/config'
-import { useRouter } from 'next/router'
+import React from 'react';
+import { RoomObject, Room } from '../../../types/types';
+import styled from 'styled-components';
+import getConfig from 'next/config';
+import { useRouter } from 'next/router';
 
 type Props = {
-  roomObjects: RoomObject[]
-  room: Room
-}
+  roomObjects: RoomObject[];
+  room: Room;
+};
 
 const Svg = styled.svg`
   border: 1px solid;
   border-radius: 5px;
-`
+`;
 
 const RoomDisplay = ({ roomObjects, room }: Props) => {
   const {
     publicRuntimeConfig: { apiUrl },
-  } = getConfig()
+  } = getConfig();
   let translatePosition = (
     evt: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => ({ x: 0, y: 0 })
+  ) => ({ x: 0, y: 0 });
   const setRef = (ref: SVGSVGElement) => {
     if (ref) {
-      const svg: SVGSVGElement = ref
-      const point: DOMPoint = svg.createSVGPoint()
+      const svg: SVGSVGElement = ref;
+      const point: DOMPoint = svg.createSVGPoint();
       translatePosition = (
         evt: React.MouseEvent<SVGSVGElement, MouseEvent>
       ) => {
-        point.x = evt.clientX
-        point.y = evt.clientY
+        point.x = evt.clientX;
+        point.y = evt.clientY;
 
-        const cursorPoint = point.matrixTransform(svg.getScreenCTM()!.inverse())
-        return { x: cursorPoint.x, y: cursorPoint.y }
-      }
+        const cursorPoint = point.matrixTransform(
+          svg.getScreenCTM()!.inverse()
+        );
+        return { x: cursorPoint.x, y: cursorPoint.y };
+      };
     }
-  }
+  };
   const createRoomObject = async (
     evt: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {
-    const position = translatePosition(evt)
+    const position = translatePosition(evt);
     await fetch(`${apiUrl}/rooms/${room.id}/room-objects`, {
       method: 'PUT',
       headers: {
@@ -50,16 +52,16 @@ const RoomDisplay = ({ roomObjects, room }: Props) => {
         position,
         imageUrl: '',
       }),
-    })
-  }
-  const router = useRouter()
+    });
+  };
+  const router = useRouter();
   const editRoomObject = (roomObjectId: string) => (
     event: React.MouseEvent<SVGCircleElement, MouseEvent>
   ) => {
-    event.stopPropagation()
-    event.preventDefault()
-    router.push(`/room/${room.id}/room-object/${roomObjectId}`)
-  }
+    event.stopPropagation();
+    event.preventDefault();
+    router.push(`/room/${room.id}/room-object/${roomObjectId}`);
+  };
 
   return (
     <Svg viewBox="0 0 100 100" ref={setRef} onClick={createRoomObject}>
@@ -75,6 +77,7 @@ const RoomDisplay = ({ roomObjects, room }: Props) => {
           />
           <circle
             onClick={editRoomObject(roomObject.id)}
+            onDragEnd={console.log}
             cx={roomObject.position.x}
             cy={roomObject.position.y}
             r="1"
@@ -86,7 +89,7 @@ const RoomDisplay = ({ roomObjects, room }: Props) => {
         </g>
       ))}
     </Svg>
-  )
-}
+  );
+};
 
-export default RoomDisplay
+export default RoomDisplay;
