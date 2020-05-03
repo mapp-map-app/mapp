@@ -68,8 +68,8 @@ const RoomDisplay = ({ roomObjects, room }: Props) => {
         <g key={roomObject.id}>
           <image
             href={roomObject.imageUrl}
-            x={roomObject.position.x}
-            y={roomObject.position.y}
+            x={roomObject.position.x - 1}
+            y={roomObject.position.y - 1}
             width="2"
             height="2"
           />
