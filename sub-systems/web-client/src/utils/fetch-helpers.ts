@@ -1,15 +1,13 @@
 import fetch from 'isomorphic-unfetch';
 import getConfig from 'next/config';
 
-const {
-  publicRuntimeConfig: { apiUrl },
-} = getConfig();
+const getApiUrl = () => getConfig().publicRuntimeConfig.apiUrl;
 
 export const swrFetch = async (
   path: string,
   init?: RequestInit | undefined
 ) => {
-  const res = await fetch(`${apiUrl}${path}`, init);
+  const res = await fetch(`${getApiUrl()}${path}`, init);
 
   return res.json();
 };
