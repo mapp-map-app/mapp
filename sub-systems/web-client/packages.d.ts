@@ -1,2 +1,2 @@
-declare module 'moving-average'
-declare module 'performance-now'
+declare module 'moving-average';
+declare module 'performance-now';

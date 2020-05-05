@@ -2,11 +2,12 @@
 
 exports[`Index should match snapshot 1`] = `
 Array [
-  <p>
-    Hello World
-  </p>,
-  <p>
-    non-random user agent
-  </p>,
+  <h1>
+    MAPP: Map APP
+  </h1>,
+  <hr />,
+  "stats component",
+  <hr />,
+  "room component",
 ]
 `;

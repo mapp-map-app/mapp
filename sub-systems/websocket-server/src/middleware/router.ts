@@ -1,12 +1,12 @@
-import Router from 'koa-router'
-import Koa from 'koa'
-import controllers from '../controllers'
+import Router from 'koa-router';
+import Koa from 'koa';
+import controllers from '../controllers';
 
 export default (app: Koa<Koa.DefaultState, Koa.DefaultContext>) => {
-  const router = new Router()
+  const router = new Router();
 
-  controllers.forEach((controller) => controller(router))
+  controllers.forEach((controller) => controller(router));
 
-  app.use(router.routes())
-  app.use(router.allowedMethods())
-}
+  app.use(router.routes());
+  app.use(router.allowedMethods());
+};

@@ -1,54 +1,45 @@
-import styled from 'styled-components'
-import getConfig from 'next/config'
-import io from 'socket.io-client'
-import React, { useState, useEffect } from 'react'
-import Stats from 'moving-average'
-import now from 'performance-now'
+import styled from 'styled-components';
+import getConfig from 'next/config';
+import io from 'socket.io-client';
+import React, { useState, useEffect } from 'react';
 
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
+
+const Message = styled.div`
+  font-family: monospace;
+`;
 
 type Props = {
-  event: string
-  showStats?: boolean
-}
+  event: string;
+  logLength?: number;
+};
 
-const Log = ({ event, showStats }: Props) => {
-  const [count, setCount] = useState(0)
-  const [ring, setRing] = useState<string[]>([])
-  const [stats] = useState(new Stats(5 * 1000))
+const Log = ({ event, logLength = 200 }: Props) => {
+  const [ring, setRing] = useState<string[]>([]);
 
   useEffect(() => {
     const {
-      publicRuntimeConfig: { websocketUrl },
-    } = getConfig()
-    const pocSocket = io(`${websocketUrl}/poc`, {
-      path: '/socket.io',
-    })
-    let lastTimestamp: number
-    pocSocket.on(event, (message: string) => {
-      const nowTime = now()
-      setCount((count) => count + 1)
-      setRing((ring) => [message, ...ring.slice(0, 49)])
-      if (lastTimestamp) stats.push(nowTime, nowTime - lastTimestamp)
-      lastTimestamp = nowTime
-    })
+      publicRuntimeConfig: { apiUrl },
+    } = getConfig();
+    const socket = io(`${apiUrl}`);
+    socket.on(event, (message: string) => {
+      setRing((ring) => [message, ...ring.slice(0, logLength)]);
+    });
     return () => {
-      pocSocket.disconnect()
-    }
-  }, [])
+      socket.disconnect();
+    };
+  }, []);
 
   return (
     <FlexContainer>
-      <h2>{`${event}(s): ${count}`}</h2>
-      {showStats ? <p>{`${(60000 / stats.movingAverage()).toFixed(2)} per minute`}</p> : null}
       {ring.map((message: string, index) => (
-        <div key={index}>{message}</div>
+        <Message key={index}>{message}</Message>
       ))}
     </FlexContainer>
-  )
-}
+  );
+};
 
-export default Log
+export default Log;

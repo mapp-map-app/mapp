@@ -1,3 +1,3 @@
-import { get } from './get'
+import { get } from './get';
 
-export default [get]
+export default [get];

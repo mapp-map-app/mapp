@@ -1,25 +1,16 @@
-import Head from 'next/head'
-import { NextPage } from 'next'
-import Layout from '../components/Layout'
+import { NextPage } from 'next';
+import Stats from '../components/Stats';
+import RoomSelection from '../components/RoomSelection';
+import Header from '../components/page-layout/Header';
 
-interface props {
-  userAgent: string
-}
-
-const Index: NextPage<props> = ({ userAgent }) => (
+const Index: NextPage = () => (
   <>
-    <Head>
-      <title>websocket poc</title>
-    </Head>
-    <p>{'Hello World'}</p>
-    <p>{userAgent}</p>
-    <Layout />
+    <Header />
+    <hr />
+    <Stats />
+    <hr />
+    <RoomSelection />
   </>
-)
+);
 
-Index.getInitialProps = async ({ req }) => {
-  const userAgent = req ? req.headers['user-agent'] || '' : navigator.userAgent
-  return { userAgent }
-}
-
-export default Index
+export default Index;
