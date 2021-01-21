@@ -1,6 +1,5 @@
 import Router from 'koa-router';
 import { update, getById } from '../../../persistance/repositories/rooms';
-import status from 'statuses';
 import { Room } from '../../../../../types/types';
 
 export const put = (router: Router) =>
@@ -9,12 +8,12 @@ export const put = (router: Router) =>
     const oldRoom = await getById(ctx.params.roomId);
 
     if (!oldRoom) {
-      ctx.status = status(404);
+      ctx.status = 404;
       return;
     }
 
     if (room.id !== oldRoom.id) {
-      ctx.status = status(400);
+      ctx.status = 400;
       return;
     }
 

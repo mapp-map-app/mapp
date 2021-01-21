@@ -4,7 +4,6 @@ import {
   update,
 } from '../../../../../persistance/repositories/room-objects';
 import { getById as getRoomById } from '../../../../../persistance/repositories/rooms';
-import status from 'statuses';
 import { RoomObject } from '../../../../../../../types/types';
 
 export const put = (router: Router) =>
@@ -15,12 +14,12 @@ export const put = (router: Router) =>
     const oldRoomObject = await getRoomObjectById(ctx.params.roomObjectId);
 
     if (!room || !oldRoomObject) {
-      ctx.status = status(404);
+      ctx.status = 404;
       return;
     }
 
     if (roomObject.id !== oldRoomObject.id) {
-      ctx.status = status(400);
+      ctx.status = 400;
       return;
     }
 
