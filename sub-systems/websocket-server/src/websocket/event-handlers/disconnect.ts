@@ -1,7 +1,6 @@
-import socketIo from 'socket.io';
 import Logger from '../logging';
 
-export const setupOnDisconnect = (socket: socketIo.Socket) => {
+export const setupOnDisconnect = (socket: SocketIO.Socket) => {
   socket.on('disconnect', function () {
     Logger.log(`disconnecting ${socket.conn.id}`);
   });

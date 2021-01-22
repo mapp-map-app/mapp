@@ -1,13 +1,11 @@
-import socketIo from 'socket.io';
-
 export default class Server {
-  private static io: socketIo.Server;
+  private static io: SocketIO.Server;
 
   private constructor() {}
 
   static getInstance = () => Server.io;
 
-  static setup(io: socketIo.Server) {
+  static setup(io: SocketIO.Server) {
     Server.io = io;
   }
 }

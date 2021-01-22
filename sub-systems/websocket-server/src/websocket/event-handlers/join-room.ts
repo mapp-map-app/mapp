@@ -1,9 +1,8 @@
-import socketIo from 'socket.io';
 import Logger from '../logging';
 import { generateSocketIoRoomName } from '../util/generate-room-name';
 import { getById } from '../../persistance/repositories/rooms';
 
-export const setupOnJoinRoom = (socket: socketIo.Socket) => {
+export const setupOnJoinRoom = (socket: SocketIO.Socket) => {
   socket.on('joinRoom', async (roomId: string) => {
     const room = await getById(roomId);
     if (!room) {
