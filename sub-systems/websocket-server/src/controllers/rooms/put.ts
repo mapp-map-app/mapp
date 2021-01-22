@@ -1,6 +1,5 @@
 import Router from 'koa-router';
 import { update } from '../../persistance/repositories/rooms';
-import status from 'statuses';
 import { Room } from '../../../../types/types';
 
 export const put = (router: Router) =>
@@ -8,7 +7,7 @@ export const put = (router: Router) =>
     const room = <Room>ctx.request.body;
 
     if (!room) {
-      ctx.status = status(400);
+      ctx.status = 400;
       return;
     }
 

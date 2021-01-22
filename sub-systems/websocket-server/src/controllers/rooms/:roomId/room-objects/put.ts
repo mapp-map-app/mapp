@@ -9,14 +9,14 @@ export const put = (router: Router) =>
     const roomObect = <RoomObject>ctx.request.body;
 
     if (!roomObect) {
-      ctx.status = status(400);
+      ctx.status = 400;
       return;
     }
 
     const room = await getById(ctx.params.roomId);
 
     if (!room) {
-      ctx.status = status(409);
+      ctx.status = 409;
       return;
     }
 
