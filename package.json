@@ -16,7 +16,8 @@
   ],
   "scripts": {
     "predev": "lerna bootstrap && lerna link",
-    "dev": "lerna run dev --parallel --stream"
+    "dev": "lerna run dev --parallel --stream",
+    "test": "lerna run test --stream"
   },
   "devDependencies": {
     "lerna": "latest"

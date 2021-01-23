@@ -7,9 +7,9 @@ export default (server: http.Server) => {
   const io: Server = require('socket.io')(server, {
     path: '/socket.io',
     cors: {
-      origin: "http://localhost:3000",
-      methods: ["GET", "POST"]
-    }
+      origin: 'http://localhost:3000',
+      methods: ['GET', 'POST'],
+    },
   });
   MappServer.setup(io);
   setupOnConnection(io);
