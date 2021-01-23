@@ -18,6 +18,7 @@
     "setup": "lerna bootstrap && lerna link",
     "predev": "yarn setup",
     "dev": "lerna run --parallel --stream dev",
+    "prettier-write": "lerna run --parallel --stream prettier-write",
     "test": "lerna run test --stream"
   },
   "devDependencies": {
