@@ -5,7 +5,7 @@ import { NextPage, NextPageContext } from 'next';
 import { useState, useEffect } from 'react';
 import RoomDisplay from '../../components/RoomDisplay';
 import RoomHeader from '../../components/RoomHeader';
-import {io} from 'socket.io-client';
+import { io } from 'socket.io-client';
 
 interface Props {
   room: Room;
