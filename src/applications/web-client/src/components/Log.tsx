@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import getConfig from 'next/config';
-import io from 'socket.io-client';
+import { io } from 'socket.io-client';
 import React, { useState, useEffect } from 'react';
 
 const FlexContainer = styled.div`

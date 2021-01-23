@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { RoomObject } from '../../../types/types';
+import { RoomObject } from 'mapp-types';
 import { useRouter } from 'next/router';
 import Draggable, { DraggableEvent } from 'react-draggable';
 import { put } from '../utils/fetch-helpers';

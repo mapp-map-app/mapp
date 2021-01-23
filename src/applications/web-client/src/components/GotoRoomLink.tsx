@@ -1,4 +1,4 @@
-import { Room } from '../../../types/types';
+import { Room } from 'mapp-types';
 import { FunctionComponent, PropsWithChildren, Children } from 'react';
 import Link from 'next/link';
 

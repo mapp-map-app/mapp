@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import { Room } from '../../../types/types';
+import { Room } from 'mapp-types';
 import Editable from './Editable';
 import Id from './styles/Id';
 import { put } from '../utils/fetch-helpers';

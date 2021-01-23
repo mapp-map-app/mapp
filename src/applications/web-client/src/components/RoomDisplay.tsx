@@ -1,5 +1,5 @@
 import React, { createRef, useEffect, useState, useLayoutEffect } from 'react';
-import { RoomObject, Room } from '../../../types/types';
+import { RoomObject, Room } from 'mapp-types';
 import styled from 'styled-components';
 import RoomObjectDisplay from './RoomObjectDisplay';
 import { put } from '../utils/fetch-helpers';
