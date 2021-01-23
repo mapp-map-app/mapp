@@ -1,0 +1,26 @@
+name: server
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: install
+      run: yarn
+    - name: setup
+      run: yarn setup
+    - name: audit
+      run: yarn audit
+    - name: test
+      run: yarn test
