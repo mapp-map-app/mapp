@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import useSWR from 'swr';
 import { swrFetch } from '../utils/fetch-helpers';
-import { Room } from '../../../types/types';
+import { Room } from 'mapp-types';
 import SmallRoomDisplay from './SmallRoomDisplay';
 import CreateRoomButton from './CreateRoomButton';
 

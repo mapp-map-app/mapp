@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Room } from '../../../types/types';
+import { Room } from 'mapp-types';
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
 import Id from './styles/Id';

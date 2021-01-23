@@ -1,6 +1,6 @@
 import { swrFetch } from '../../utils/fetch-helpers';
 import getConfig from 'next/config';
-import { Room, RoomObject } from '../../../../types/types';
+import { Room, RoomObject } from 'mapp-types';
 import { NextPage, NextPageContext } from 'next';
 import { useState, useEffect } from 'react';
 import RoomDisplay from '../../components/RoomDisplay';
