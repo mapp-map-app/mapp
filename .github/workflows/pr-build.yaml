@@ -16,15 +16,11 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-    - name: test
-      working-directory: sub-systems/websocket-server
-      run: npm install
+    - name: install
+      run: yarn
+    - name: setup
+      run: yarn setup
     - name: audit
-      working-directory: sub-systems/websocket-server
-      run: npm audit
-    - name: lint
-      working-directory: sub-systems/websocket-server
-      run: npm run lint
+      run: yarn audit
     - name: test
-      working-directory: sub-systems/websocket-server
-      run: npm run test
+      run: yarn test

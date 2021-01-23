@@ -15,7 +15,8 @@
     "src/packages/*"
   ],
   "scripts": {
-    "predev": "lerna bootstrap && lerna link",
+    "setup": "lerna bootstrap && lerna link",
+    "predev": "yarn setup",
     "dev": "lerna run dev --parallel --stream",
     "test": "lerna run test --stream"
   },
