@@ -1,0 +1,25 @@
+{
+  "name": "mapp",
+  "version": "1.0.0",
+  "description": "maps for tabletop games",
+  "main": "index.js",
+  "repository": "git@github.com:mapp-map-app/mapp.git",
+  "author": "achristianson@pessimistic-it.com",
+  "license": "ISC",
+  "private": true,
+  "engines": {
+    "yarn": ">=1.17.3"
+  },
+  "workspaces": [
+    "src/applications/*",
+    "src/packages/*"
+  ],
+  "scripts": {
+    "predev": "lerna bootstrap && lerna link",
+    "dev": "lerna run dev --parallel --stream"
+  },
+  "devDependencies": {
+    "lerna": "latest"
+  },
+  "dependencies": {}
+}
